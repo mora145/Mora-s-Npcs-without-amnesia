@@ -1,0 +1,1 @@
+A "basic" time with a small variation. From 3 minutes to 5 minutes of searching. 
