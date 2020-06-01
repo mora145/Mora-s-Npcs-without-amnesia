@@ -59,6 +59,10 @@ function on_game_start()
 	RegisterScriptCallback("on_game_load",on_game_load)
 end
 
+math.randomseed(os.time())
+local rnd = math.random(300000,720000)
+local rnd2 = rnd - 10000
+
 function is_enemy(obj,enemy,no_memory)
 	--alun_utils.debug_write("eval_is_enemy")
 	if(device().precache_frame > 1) then
@@ -106,9 +110,6 @@ function is_enemy(obj,enemy,no_memory)
 		if (no_memory ~= true) then
 			local tg = time_global()
 			local time_in_memory = tg - obj:memory_time(enemy)
-			math.randomseed(os.time())
-			local rnd = math.random(300000,720000)
-			local rnd2 = rnd - 5000
 			if (time_in_memory < 0) then
 				--obj:enable_memory_object(enemy,false)
 				--time_in_memory = time_in_memory + utils.load_var(obj,"mem_time_offset",0)
@@ -116,7 +117,7 @@ function is_enemy(obj,enemy,no_memory)
 					return false 
 				end
 			else 
-				if (ene_id == AC_ID and time_in_memory>rnd or time_in_memory>rnd2) then
+				if (ene_id == AC_ID and time_in_memory>rnd or time_in_memory>rnd2) or (enemy:position():distance_to_sqr(obj:position())>20000 and not enemy:see(obj)) then
 					--obj:enable_memory_object(enemy,false)
 					--utils.save_var(obj,"mem_time_offset",tg)
 					return false
