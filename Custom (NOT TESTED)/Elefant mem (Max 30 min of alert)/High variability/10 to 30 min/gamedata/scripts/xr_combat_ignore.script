@@ -62,6 +62,7 @@ end
 math.randomseed(os.time())
 local rnd = math.random(600000,1800000)
 local rnd2 = rnd - 10000
+local dist_rnd = math.random(150000,200000)
 
 function is_enemy(obj,enemy,no_memory)
 	--alun_utils.debug_write("eval_is_enemy")
@@ -117,7 +118,7 @@ function is_enemy(obj,enemy,no_memory)
 					return false 
 				end
 			else 
-				if (ene_id == AC_ID and time_in_memory>rnd or time_in_memory>rnd2) or (enemy:position():distance_to_sqr(obj:position())>20000 and not enemy:see(obj)) then
+				if (ene_id == AC_ID and time_in_memory>rnd or time_in_memory>rnd2) or (enemy:position():distance_to_sqr(obj:position())>dist_rnd and not enemy:see(obj)) then
 					--obj:enable_memory_object(enemy,false)
 					--utils.save_var(obj,"mem_time_offset",tg)
 					return false
