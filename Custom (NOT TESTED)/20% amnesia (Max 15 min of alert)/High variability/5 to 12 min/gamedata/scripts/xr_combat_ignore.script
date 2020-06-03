@@ -62,7 +62,7 @@ end
 math.randomseed(os.time())
 local rnd = math.random(300000,720000)
 local rnd2 = rnd - 10000
-local dist_rnd = math.random(150000,200000)
+local dist_rnd = math.random(20000,40000)
 
 function is_enemy(obj,enemy,no_memory)
 	--alun_utils.debug_write("eval_is_enemy")
